@@ -7587,7 +7587,7 @@ const MODULES = `
     static APP_PGC_PLAYURL = _URLS.P_AUTO + _URLS.D_API + "/pgc/player/api/playurl";
     static ACCOUNT_GETCARDBYMID = _URLS.P_AUTO + _URLS.D_ACCOUNT + "/api/member/getCardByMid";
     static LOGIN_APP_THIRD = _URLS.P_AUTO + _URLS.D_PASSPORT + "/login/app/third";
-    static PLAYER = _URLS.P_AUTO + _URLS.D_API + "/x/player/v2";
+    static PLAYER = _URLS.P_AUTO + _URLS.D_API + "/x/player/wbi/v2";
     static PLAYURL_PROJ = _URLS.P_AUTO + _URLS.D_APP + "/v2/playurlproj";
     static PGC_PLAYURL_PROJ = _URLS.P_AUTO + _URLS.D_API + "/pgc/player/api/playurlproj";
     static PGC_PLAYURL_TV = _URLS.P_AUTO + _URLS.D_API + "/pgc/player/api/playurltv";
@@ -37404,7 +37404,7 @@ const MODULES = `
     }
     /** 修复泰区player接口 */
     player() {
-      xhrHook.async("api.bilibili.com/x/player/v2?", void 0, async (args) => {
+      xhrHook.async("api.bilibili.com/x/player/wbi/v2?", void 0, async (args) => {
         const obj = urlObj(args[1]);
         const aid = obj.aid;
         const cid = obj.cid;
