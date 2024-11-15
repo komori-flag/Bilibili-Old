@@ -51,7 +51,7 @@ export class URLS {
     static readonly APP_PGC_PLAYURL = URLS.P_AUTO + URLS.D_API + '/pgc/player/api/playurl';
     static readonly ACCOUNT_GETCARDBYMID = URLS.P_AUTO + URLS.D_ACCOUNT + '/api/member/getCardByMid';
     static readonly LOGIN_APP_THIRD = URLS.P_AUTO + URLS.D_PASSPORT + '/login/app/third';
-    static readonly PLAYER = URLS.P_AUTO + URLS.D_API + '/x/player/v2';
+    static readonly PLAYER = URLS.P_AUTO + URLS.D_API + '/x/player/wbi/v2';
     static readonly PLAYURL_PROJ = URLS.P_AUTO + URLS.D_APP + '/v2/playurlproj';
     static readonly PGC_PLAYURL_PROJ = URLS.P_AUTO + URLS.D_API + '/pgc/player/api/playurlproj';
     static readonly PGC_PLAYURL_TV = URLS.P_AUTO + URLS.D_API + '/pgc/player/api/playurltv';
