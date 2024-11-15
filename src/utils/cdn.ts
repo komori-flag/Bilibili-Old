@@ -14,9 +14,9 @@ class Cdn {
     encode(path: string, hash = this.hash) {
         switch (this.host) {
             case 'jsdelivr':
-                return `${this.protocol}://fastly.jsdelivr.net/gh/MotooriKashin/Bilibili-Old${hash ? `@${hash}` : ''}${path}`;
+                return `${this.protocol}://fastly.jsdelivr.net/gh/komori-flag/Bilibili-Old${hash ? `@${hash}` : ''}${path}`;
             default:
-                return `${this.protocol}://github.com/MotooriKashin/Bilibili-Old/raw/${hash || 'master'}${path}`;
+                return `${this.protocol}://github.com/komori-flag/Bilibili-Old/raw/${hash || 'master'}${path}`;
         }
     }
     /** 更新默认值 */
