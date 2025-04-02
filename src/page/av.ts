@@ -3,6 +3,7 @@ import { Comment } from "../core/comment";
 import { player } from "../core/player";
 import { toast } from "../core/toast";
 import { Like } from "../core/ui/like";
+import { Dislike } from "../core/ui/dislike";
 import { urlCleaner } from "../core/url";
 import { user } from "../core/user";
 import { videoInfo } from "../core/video-info";
@@ -32,6 +33,7 @@ export class PageAV extends Page {
     protected destroy = false;
 
     protected like: Like;
+    protected dislike: Dislike;
 
     protected webpackJsonp = true;
 
@@ -48,10 +50,12 @@ export class PageAV extends Page {
         location.href.replace(/av\d+/i, d => this.aid = <any>d.slice(2));
         new Comment();
         this.like = new Like();
+        this.dislike = new Dislike();
         propertyHook(window, '__INITIAL_STATE__', undefined);
         propertyHook(window, '__playinfo__', undefined);
         location.href.includes("/s/video") && urlCleaner.updateLocation(location.href.replace("s/video", "video"));
         this.enLike();
+        this.enDislike();
         this.aidLostCheck();
         // this.biliUIcomponents();
         this.favCode();
@@ -350,6 +354,23 @@ export class PageAV extends Page {
                 }
                 this.like.likes = v.stat?.like!;
                 this.like.init();
+            })
+        }
+    }
+
+    /** 点踩功能 */
+    protected enDislike() {
+        if (user.userStatus!.like) {
+            poll(() => document.querySelector<HTMLSpanElement>('#viewbox_report > div.number > span.u.coin'), d => {
+                if (this.destroy) return this.dislike.remove();
+                d.parentElement?.insertBefore(this.dislike, d);
+            });
+            const destroy = videoInfo.bindChange(v => {
+                if (this.destroy) {
+                    destroy();
+                    return this.dislike.remove();
+                }
+                this.dislike.init();
             })
         }
     }
